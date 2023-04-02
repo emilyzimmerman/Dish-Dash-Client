@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -7,16 +9,14 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { NavComponent } from './shared/nav/nav.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SignupComponent,
-    NavComponent
-  ],
+  declarations: [AppComponent, SignupComponent, NavComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
