@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +9,10 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -20,7 +24,9 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     const loginUser = this.loginForm.value;
     this.authService.login(loginUser).subscribe((res: any) => {
-      console.log(res);
+      if (res.success) {
+        this.userService.setCurrentUser(res.payload.user);
+      }
     });
   }
 }
