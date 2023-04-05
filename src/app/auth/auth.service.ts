@@ -47,6 +47,24 @@ export class AuthService {
     //send request to get user information
   }
 
+  logout() {
+    const token = this.getToken();
+
+    this.http
+      .delete('http://localhost:3000/api/v1/users/logout', {
+        headers: {
+          Authorization: `Bearer ${token.value}`,
+        },
+      })
+      .subscribe((res: any) => {
+        if (res.success) {
+          this.removeToken();
+          this.userService.setCurrentUser(null);
+          this.route.navigate(['/login']);
+        }
+      });
+  }
+
   getToken() {
     return JSON.parse(localStorage.getItem('token'));
   }
