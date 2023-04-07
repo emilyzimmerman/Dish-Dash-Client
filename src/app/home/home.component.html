@@ -2,11 +2,7 @@
   <!--Similar set up as Home From College Webpage -->
   <!--Meal Types & Card previews-->
   <nav class="nav justify-content-between">
-    <a href="" class="p-2 link-secondary">Meal Type</a>
-    <a href="" class="p-2 link-secondary">Meal Type</a>
-    <a href="" class="p-2 link-secondary">Meal Type</a>
-    <a href="" class="p-2 link-secondary">Meal Type</a>
-    <a href="" class="p-2 link-secondary">Meal Type</a>
+    <a href="" class="p-2 link-secondary" *ngFor="let meal of meals">{{meal.mealType}}</a>
   </nav>
 
   <div class="bg-dark text-white p-4 p-md-5 rounded mb-4">
@@ -15,23 +11,22 @@
   </div>
 
   <div class="row">
-    <div class="col-md-6">
-      Test
+      Note to self: How to change make each row a name without duplicating all?
       <div class="row">
         <!--Start of a card-->
-        <div class="col-3">
+        <div class="col-md-6 shadow-sm mb-4 rounded" *ngFor="let recipe of suggestedRecipes">
           <div class="row">
             <div class="col">
               <!--Meal type-->
               <div>
-                <strong class="d-incline-block mb-2 text-primary">Meal Type</strong>
+                <strong class="d-incline-block mb-2 text-primary">{{recipe.meal.mealType}}</strong>
               </div>
               <!--Title-->
-              <h3>Recipe Title</h3>
+              <h3>{{recipe.name}}</h3>
               <!--Date created-->
               <div class="mb-1 text-muted">April 1</div>
               <!--User-->
-              <div class="card-text col-auto">Username</div>
+              <div class="card-text col-auto">{{recipe.user.username}}</div>
               <!--Content/ cont reading-->
               <p>
                 <a href="" class="link-secondary">Continue Reading</a>
@@ -43,6 +38,7 @@
               alt=""
               width="200 px"
               height="200px"
+              style="object-fit: cover;"
               />
             </div>
           </div>
@@ -50,7 +46,5 @@
         <div class="col-3">test</div>
         <div class="col-3">test</div>
       </div>
-    </div>
-    <div class="col-md-6">Column 1</div>
   </div>
 </main>
