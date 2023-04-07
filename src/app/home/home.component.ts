@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   constructor(private recipeService: RecipeService) {}
 
   ngOnInit(): void {
-    this.recipeService.fetchRecipe().subscribe((res: any) => {
+    this.recipeService.fetchRecipes().subscribe((res: any) => {
       console.log(res);
       if (res.success) {
         this.suggestedRecipes = res.payload.suggested;

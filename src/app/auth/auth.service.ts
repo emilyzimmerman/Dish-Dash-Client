@@ -40,7 +40,7 @@ export class AuthService {
           this.userService.setCurrentUser(res.payload.user);
           console.log(res);
           //navigate to home
-          this.route.navigate(['/home']);
+          //this.route.navigate(['/home']);
         }
       });
 

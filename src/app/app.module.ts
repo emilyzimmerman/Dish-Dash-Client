@@ -9,9 +9,10 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { NavComponent } from './shared/nav/nav.component';
 import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
+import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 
 @NgModule({
-  declarations: [AppComponent, SignupComponent, NavComponent, LoginComponent, HomeComponent],
+  declarations: [AppComponent, SignupComponent, NavComponent, LoginComponent, HomeComponent, RecipeDetailComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
