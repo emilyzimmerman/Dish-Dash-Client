@@ -1,1 +1,16 @@
-<header *ngIf="recipe"></header>
+<!--Add a background image but not working ->
+style="background-image: url('{{recipe.image_path}}')"-->
+
+<header *ngIf="recipe" style="background-image: url('https://www.lacademie.com/wp-content/uploads/2022/04/asian-cuisines.jpg')">
+  <div class="text-center text-white position-relative">
+    <h1>{{recipe.name}} </h1>
+    <h3 class="my-2">Created by: {{recipe.user.username}}</h3>
+    <p class="badge bg-dark mx-2">Meal Type: {{recipe.meal.mealType}}</p>
+  </div>
+</header>
+
+<article *ngIf="recipe">
+  <div>
+    <p>{{recipe.content}}</p>
+  </div>
+</article>
