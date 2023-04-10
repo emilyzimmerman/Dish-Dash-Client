@@ -1,0 +1,20 @@
+<header *ngIf="profileUser">
+  <h1 class="text-center" style="padding-bottom: 2rem; padding-top: 2rem;">{{profileUser.username}}'s Recipes</h1>
+</header>
+<div *ngIf="profileUser" class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-10 col-lg-8 col-xl-7">
+      <div *ngFor="let recipe of profileRecipes">
+        <div class="post-preview">
+          <h2>{{recipe.name}}</h2>
+          <p>{{recipe.content}}</p>
+          <p>
+            <a routerLink="/recipes/{{recipe.id}}" class="link-secondary">Continue Reading</a>
+          </p>
+          <p>Created on some date</p>
+        </div>
+        <hr class="my-4"/>
+      </div>
+    </div>
+  </div>
+</div>
