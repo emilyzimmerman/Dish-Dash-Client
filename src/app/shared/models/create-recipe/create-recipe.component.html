@@ -14,21 +14,21 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form [formGroup]="recipeFormGroup" (ngSubmit)="onSubmit()">
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Name of Recipe</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" formControlName="name">
           </div>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Content of Recipe</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" formControlName="content">
           </div>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Image Path</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" formControlName="image_path">
           </div>
 
-          <select class="form-select" aria-label="Default select example">
+          <select class="form-select" aria-label="Default select example" formControlName="meal_id">
             <option *ngFor="let meal of meals" value="{{meal.id}}">{{meal.mealType}}</option>
           </select>
 
