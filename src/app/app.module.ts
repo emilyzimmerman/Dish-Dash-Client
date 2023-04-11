@@ -11,9 +11,19 @@ import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { ProfileComponent } from './profile/profile.component';
+import { CreateRecipeComponent } from './shared/models/create-recipe/create-recipe.component';
 
 @NgModule({
-  declarations: [AppComponent, SignupComponent, NavComponent, LoginComponent, HomeComponent, RecipeDetailComponent, ProfileComponent],
+  declarations: [
+    AppComponent,
+    SignupComponent,
+    NavComponent,
+    LoginComponent,
+    HomeComponent,
+    RecipeDetailComponent,
+    ProfileComponent,
+    CreateRecipeComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
