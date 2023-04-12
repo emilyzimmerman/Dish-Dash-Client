@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RecipeService } from 'src/app/shared/services/recipe.service';
 import { AuthService } from '../auth.service';
 import { UserService } from '../user.service';
 
@@ -13,6 +14,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private userService: UserService,
+    private recipeService: RecipeService,
     private route: Router
   ) {}
 
@@ -28,6 +30,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(loginUser).subscribe((res: any) => {
       if (res.success) {
         this.userService.setCurrentUser(res.payload.user);
+        this.recipeService.setRecipes(res.payload.user.recipes);
         this.route.navigate(['/home']);
         this.authService.setToken(res.payload.token);
       }

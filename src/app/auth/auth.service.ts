@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { RecipeService } from '../shared/services/recipe.service';
 import { UserService } from './user.service';
 
 @Injectable({
@@ -10,7 +11,8 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private route: Router,
-    private userService: UserService
+    private userService: UserService,
+    private recipeService: RecipeService
   ) {}
 
   signup(user) {
@@ -38,6 +40,7 @@ export class AuthService {
       .subscribe((res: any) => {
         if (res.success) {
           this.userService.setCurrentUser(res.payload.user);
+          this.recipeService.setRecipes(res.payload.user.recipes);
           console.log(res);
           //navigate to home
           //this.route.navigate(['/home']);
