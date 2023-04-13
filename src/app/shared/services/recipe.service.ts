@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { AuthService } from 'src/app/auth/auth.service';
 
 const URL = 'http://localhost:3000/api/v1';
 
@@ -10,6 +9,7 @@ const URL = 'http://localhost:3000/api/v1';
 })
 export class RecipeService {
   currentUsesrRecipesSubject: Subject<any> = new Subject();
+  detailRecipeSubject: Subject<any> = new Subject();
   currentUserRecipes = [];
   constructor(private http: HttpClient) {}
 
@@ -38,5 +38,28 @@ export class RecipeService {
   setRecipes(recipes) {
     this.currentUserRecipes = recipes;
     this.currentUsesrRecipesSubject.next(recipes);
+  }
+
+  onUpdateRecipe(updatedRecipe, id) {
+    const token = JSON.parse(localStorage.getItem('token'));
+
+    return this.http.put(
+      `http://localhost:3000/api/v1/recipes/${id}`,
+      updatedRecipe,
+      {
+        headers: {
+          Authorization: `Bearer ${token.value}`,
+        },
+      }
+    );
+  }
+
+  updateRecipe(editRecipe: any) {
+    this.detailRecipeSubject.next(editRecipe);
+    const index = this.currentUserRecipes.findIndex(
+      (recipe) => recipe.id === editRecipe.id
+    );
+    this.currentUserRecipes[index] = editRecipe;
+    this.setRecipes(this.currentUserRecipes);
   }
 }

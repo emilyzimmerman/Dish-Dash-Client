@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CreateRecipeComponent } from './shared/models/create-recipe/create-recipe.component';
+import { EditRecipeComponent } from './shared/models/edit-recipe/edit-recipe.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CreateRecipeComponent } from './shared/models/create-recipe/create-reci
     RecipeDetailComponent,
     ProfileComponent,
     CreateRecipeComponent,
+    EditRecipeComponent,
   ],
   imports: [
     BrowserModule,

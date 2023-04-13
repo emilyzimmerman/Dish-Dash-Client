@@ -2,10 +2,15 @@
 style="background-image: url('{{recipe.image_path}}')"-->
 
 <header *ngIf="recipe" style="background-image: url('https://www.lacademie.com/wp-content/uploads/2022/04/asian-cuisines.jpg')">
-  <div class="text-center text-white position-relative">
-    <h1>{{recipe.name}} </h1>
-    <h3 class="my-2">Created by: <a routerLink="/profile/{{user.username}}">{{recipe.user.username}}</a></h3>
-    <p class="badge bg-dark mx-2">Meal Type: {{recipe.meal.mealType}}</p>
+  <div class="position-relative">
+    <h1 class="text-white text-center">{{recipe.name}} </h1>
+    <h3 class="my-2 text-white text-center">Created by: <a routerLink="/profile/{{user.username}}">{{recipe.user.username}}</a></h3>
+    <div class=" text-white text-center text-center">
+      <span class="badge bg-dark mx-2">Meal Type: {{recipe.meal.mealType}}</span>
+    </div>
+    <div *ngIf="user && currentUser && user.username === currentUser.username">
+      <app-edit-recipe [recipe]="recipe"></app-edit-recipe>
+    </div>
   </div>
 </header>
 

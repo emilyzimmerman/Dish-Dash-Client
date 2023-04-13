@@ -1,0 +1,48 @@
+<!-- Button trigger modal -->
+<div class="text-center">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Edit Recipe
+  </button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit a Recipe</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger" role="alert"
+          *ngFor="let error of errors">
+          {{error}}
+        </div>
+        <form [formGroup]="recipeFormGroup" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Name of Recipe</label>
+            <input type="text" class="form-control" formControlName="name">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Content of Recipe</label>
+            <input type="text" class="form-control" formControlName="content">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Image Path</label>
+            <input type="text" class="form-control" formControlName="image_path">
+          </div>
+
+          <select class="form-select" aria-label="Default select example" formControlName="meal_id">
+            <option *ngFor="let meal of meals" value="{{meal.id}}">{{meal.mealType}}</option>
+          </select>
+
+
+          <button type="submit" class="btn btn-primary">Save Recipe</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" #closeBtn>Close</button>
+      </div>
+    </div>
+  </div>
+</div>

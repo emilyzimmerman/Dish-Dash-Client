@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { UserService } from '../auth/user.service';
 import { RecipeService } from '../shared/services/recipe.service';
 
 @Component({
@@ -12,13 +13,23 @@ export class RecipeDetailComponent implements OnInit {
   recipe: any = null;
   meal: any = null;
   user: any = null;
+  currentUser = null;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private recipeService: RecipeService
+    private recipeService: RecipeService,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
+    this.recipeService.detailRecipeSubject.subscribe((updatedrecipe: any) => {
+      this.recipe = updatedrecipe;
+    });
+
+    this.userService.currentUserSubject.subscribe((currentUser: any) => {
+      this.currentUser = currentUser;
+    });
+
     this.activatedRoute.params.subscribe((params) => {
       const recipeId = params.id;
       this.recipeService.fetchRecipe(recipeId).subscribe({
