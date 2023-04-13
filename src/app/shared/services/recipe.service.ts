@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 
 const URL = 'http://localhost:3000/api/v1';
 
@@ -61,5 +61,14 @@ export class RecipeService {
     );
     this.currentUserRecipes[index] = editRecipe;
     this.setRecipes(this.currentUserRecipes);
+  }
+
+  deleteRecipe(id) {
+    const token = JSON.parse(localStorage.getItem('token'));
+    return this.http.delete(`http://localhost:3000/api/v1/recipes/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token.value}`,
+      },
+    });
   }
 }

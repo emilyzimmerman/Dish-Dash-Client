@@ -8,8 +8,9 @@ style="background-image: url('{{recipe.image_path}}')"-->
     <div class=" text-white text-center text-center">
       <span class="badge bg-dark mx-2">Meal Type: {{recipe.meal.mealType}}</span>
     </div>
-    <div *ngIf="user && currentUser && user.username === currentUser.username">
-      <app-edit-recipe [recipe]="recipe"></app-edit-recipe>
+    <div class="text-center" *ngIf="user && currentUser && user.username === currentUser.username">
+      <app-edit-recipe [recipe]="recipe"></app-edit-recipe> |
+      <button class="btn btn-danger" (click)="onDeleteRecipe()">Delete Recipe</button>
     </div>
   </div>
 </header>

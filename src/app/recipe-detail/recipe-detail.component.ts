@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { UserService } from '../auth/user.service';
 import { RecipeService } from '../shared/services/recipe.service';
 
@@ -18,7 +18,8 @@ export class RecipeDetailComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private recipeService: RecipeService,
-    private userService: UserService
+    private userService: UserService,
+    private route: Router
   ) {}
 
   ngOnInit(): void {
@@ -39,6 +40,14 @@ export class RecipeDetailComponent implements OnInit {
           this.user = res.payload.recipe.user;
         },
       });
+    });
+  }
+
+  onDeleteRecipe() {
+    this.recipeService.deleteRecipe(this.recipe.id).subscribe({
+      next: (res: any) => {
+        this.route.navigate([`/profile/${this.currentUser.username}`]);
+      },
     });
   }
 }
