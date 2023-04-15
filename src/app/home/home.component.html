@@ -4,47 +4,48 @@
   <nav class="nav justify-content-between">
     <a routerLink="/meals/{{meal.id}}" class="link-secondary" *ngFor="let meal of meals">{{meal.mealType}}</a>
   </nav>
-
   <div class="bg-dark text-white p-4 p-md-5 rounded mb-4">
      <h1 class="fst-italic">Welcome to Dish Dash</h1>
      <p> Are you ready to find your next meal?</p>
   </div>
-
   <div class="row">
-      Note to self: How to change make each row a name without duplicating all?
       <div class="row">
         <!--Start of a card-->
-        <div class="col-md-6 shadow-sm mb-4 rounded" *ngFor="let recipe of suggestedRecipes">
-          <div class="row">
-            <div class="col">
-              <!--Meal type-->
-              <div>
-                <strong class="d-incline-block mb-2 text-primary">{{recipe.meal.mealType}}</strong>
+        <div class="row" style="margin-right: 10px;">
+          <!-- Loop over each meal id -->
+          <ng-container *ngFor="let meal of meals">
+            <!--Title Card-->
+            <div class="card" style="width: 18rem; background-color: #ff9d5c; height: 100pt; text-align:center">
+              <div class="card-body">
+                <h5 class="card-title">{{meal.mealType}}</h5>
               </div>
-              <!--Title-->
-              <h3>{{recipe.name}}</h3>
-              <!--Date created-->
-              <div class="mb-1 text-muted">April 1</div>
-              <!--User-->
-              <div class="card-text col-auto">{{recipe.user.username}}</div>
-              <!--Content/ cont reading-->
-              <p>
-                <a routerLink="/recipes/{{recipe.id}}" class="link-secondary">Continue Reading</a>
-              </p>
             </div>
-            <div class="col-auto d-none d-lg-block">
-              <!--Image-->
-              <img src="https://www.chilipeppermadness.com/wp-content/uploads/2023/01/Buldak-Ramen-SQ-500x375.jpg"
-              alt=""
-              width="200 px"
-              height="200px"
-              style="object-fit: cover;"
-              />
+            <!--Recipe Card-->
+            <div class="col-md-3" *ngFor="let recipe of suggestedRecipes | filter: { meal: meal } | slice:0:3">
+              <div class="card col-md-6 shadow-sm mb-4 rounded" style="width: 18rem;">
+                <div class="col-auto d-none d-lg-block">
+                  <img
+                    src="https://www.chilipeppermadness.com/wp-content/uploads/2023/01/Buldak-Ramen-SQ-500x375.jpg"
+                    class="card-img-top"
+                    alt="..."
+                    width="200 px"
+                    height="200px"
+                    style="object-fit: cover;">
+                </div>
+                <div class="card-body">
+                  <div>
+                    <strong class="d-incline-block mb-2 text-primary">{{recipe.meal.mealType}}</strong>
+                  </div>
+                  <h5 class="card-title">{{recipe.name}}</h5>
+                  <div class="card-text col-auto">{{recipe.user.username}}</div>
+                  <p class="card-text">{{recipe.content| slice:0:30}}...</p>
+                  <a routerLink="/recipes/{{recipe.id}}" class="link-secondary">Continue Reading</a>
+                </div>
+              </div>
             </div>
-          </div>
+          </ng-container>
         </div>
-        <div class="col-3">test</div>
-        <div class="col-3">test</div>
       </div>
   </div>
+
 </main>

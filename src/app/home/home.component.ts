@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '../shared/services/recipe.service';
+import { FilterPipe } from '../filter.pipe';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
+  providers: [FilterPipe],
 })
 export class HomeComponent implements OnInit {
   suggestedRecipes: any = [];
