@@ -10,4 +10,8 @@ export class MealsService {
   fetchMeals() {
     return this.http.get('http://localhost:3000/api/v1/meals');
   }
+
+  fetchMeal(id: number) {
+    return this.http.get(`http://localhost:3000/api/v1/meals/${id}`);
+  }
 }

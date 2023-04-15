@@ -2,7 +2,7 @@
   <!--Similar set up as Home From College Webpage -->
   <!--Meal Types & Card previews-->
   <nav class="nav justify-content-between">
-    <a href="" class="p-2 link-secondary" *ngFor="let meal of meals">{{meal.mealType}}</a>
+    <a routerLink="/meals/{{meal.id}}" class="link-secondary" *ngFor="let meal of meals">{{meal.mealType}}</a>
   </nav>
 
   <div class="bg-dark text-white p-4 p-md-5 rounded mb-4">
