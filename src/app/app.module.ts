@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { FilterPipe } from './filter.pipe';
 
@@ -15,6 +15,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { CreateRecipeComponent } from './shared/models/create-recipe/create-recipe.component';
 import { EditRecipeComponent } from './shared/models/edit-recipe/edit-recipe.component';
 import { MealsComponent } from './meals/meals.component';
+import { ChatGPTComponent } from './chat-gpt/chat-gpt.component';
 
 @NgModule({
   declarations: [
@@ -29,12 +30,14 @@ import { MealsComponent } from './meals/meals.component';
     CreateRecipeComponent,
     EditRecipeComponent,
     MealsComponent,
+    ChatGPTComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

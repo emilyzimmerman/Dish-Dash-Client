@@ -1,0 +1,10 @@
+<form>
+  <label>
+    What's Your Question?
+    <input type="text" name="prompt" [(ngModel)]="prompt">
+  </label>
+  <button (click)="getGptResponse()">Get response</button>
+</form>
+
+Response:
+<p>{{ gptResponse }}</p>

@@ -19,6 +19,9 @@
           <a class="nav-link active" aria-current="page" routerLink="/profile/{{currentUser.username}}" *ngIf="currentUser">My Dashboard</a>
         </li>
         <li class="nav-item" *ngIf="currentUser">
+          <a class="nav-link active" aria-current="page" routerLink="/helper" *ngIf="currentUser">Need Help?</a>
+        </li>
+        <li class="nav-item" *ngIf="currentUser">
           <a class="nav-link active" aria-current="page" (click)="onLogout()" >Logout</a>
         </li>
       </ul>
