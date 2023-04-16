@@ -1,0 +1,34 @@
+<!-- Button trigger modal -->
+<div>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+   Add Review
+  </button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel2">Add Review</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-danger" role="alert"
+          *ngFor="let error of errors">
+          {{error}}
+        </div>
+        <form [formGroup]="reviewFormGroup" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">What Would You like to Comment?</label>
+            <input type="text" class="form-control" formControlName="comment">
+          </div>
+          <button type="submit" class="btn btn-primary">Add Review</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" #closeBtn>Close</button>
+      </div>
+    </div>
+  </div>
+</div>

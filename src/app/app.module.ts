@@ -16,6 +16,8 @@ import { CreateRecipeComponent } from './shared/models/create-recipe/create-reci
 import { EditRecipeComponent } from './shared/models/edit-recipe/edit-recipe.component';
 import { MealsComponent } from './meals/meals.component';
 import { ChatGPTComponent } from './chat-gpt/chat-gpt.component';
+import { ReviewsComponent } from './reviews/reviews.component';
+import { CreateReviewComponent } from './shared/models/create-review/create-review.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { ChatGPTComponent } from './chat-gpt/chat-gpt.component';
     EditRecipeComponent,
     MealsComponent,
     ChatGPTComponent,
+    ReviewsComponent,
+    CreateReviewComponent,
   ],
   imports: [
     BrowserModule,

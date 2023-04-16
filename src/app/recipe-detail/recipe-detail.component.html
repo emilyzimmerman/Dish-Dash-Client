@@ -10,13 +10,24 @@ style="background-image: url('{{recipe.image_path}}')"-->
     </div>
     <div class="text-center" *ngIf="user && currentUser && user.username === currentUser.username">
       <app-edit-recipe [recipe]="recipe"></app-edit-recipe> |
-      <button class="btn btn-danger" (click)="onDeleteRecipe()">Delete Recipe</button>
+      <button class="btn btn-danger" (click)="onDeleteRecipe()">Delete Recipe</button> |
     </div>
   </div>
 </header>
 
-<article *ngIf="recipe">
-  <div>
+<article>
+  <div *ngIf="recipe">
     <p>{{recipe.content}}</p>
+  </div>
+
+  <div>
+    <h3>Reviews</h3>
+    <app-create-review></app-create-review>
+    <ul>
+      <li *ngFor="let review of reviews">
+        <p>{{review.comment}}</p>
+        <h4>{{ review.user_id}}</h4>
+      </li>
+    </ul>
   </div>
 </article>

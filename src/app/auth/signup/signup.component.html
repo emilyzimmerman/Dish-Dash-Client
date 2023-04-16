@@ -1,44 +1,67 @@
-<div class ="mt-5">
 
-<h1 class="text-center"> Sign Up</h1>
-<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-  <div class="row">
-    <div class="col-6">
-      <div class="mb-3">
-        <label for="" class="form-label">Email</label>
-        <input type="email" class="form-control"
-        id="email" formControlName="email"/>
+    <div class="d-flex justify-content-center align-items-center vh-100">
+      <div class="col-md-6 mt-5">
+        <div class="rounded" style="padding: 10px; background-color: #ecae7d;">
+          <h1 style="margin-left: 20px;"> Sign Up</h1>
+          <div *ngIf="error" class="alert alert-danger">
+            An error occured. Please try again.
+          </div>
+          <div *ngIf="completed" class="alert alert-success">
+            Request completed successfully!
+          </div>
+
+          <div style="margin-left: 20px;">
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-6">
+                  <div class="mb-3">
+                    <label for="" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" formControlName="email" />
+                  </div>
+                  <div>
+                    We'll never share your email with anyone else
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-6">
+                      <label for="" class="form-label">First Name</label>
+                      <input type="text" class="form-control" id="first_name" formControlName="first_name" />
+                    </div>
+                    <div class="col-6">
+                      <label for="" class="form-label">Last Name</label>
+                      <input type="text" class="form-control" id="last_name" formControlName="last_name" />
+                    </div>
+                    <div class="col-6">
+                      <label for="" class="form-label">Phone Number</label>
+                      <input type="phone" class="form-control" id="phone" formControlName="phone" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-6">
+                  <label for="" class="form-label">Username</label>
+                  <input type="text" class="form-control" id="username" formControlName="username" />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-6">
+                  <label for="" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="password" formControlName="password" />
+                </div>
+              </div>
+                <button class="btn btn-success" type="submit">Sign Up</button>
+                <p >Already Have an account?<a class="nav-link active" aria-current="page"
+                    routerLink="/login">Login</a></p>
+            </form>
+          </div>
+
+        </div>
       </div>
-      <div>
-        We'll never share your email with anyone else
-      </div>
-      <div class="row mb-3">
-      <div class="col-6">
-        <label for="" class="form-label">First Name</label>
-        <input type="text" class="form-control" id="first_name" formControlName="first_name"/>
-      </div>
-      <div class="col-6">
-        <label for="" class="form-label">Last Name</label>
-        <input type="text" class="form-control" id="last_name" formControlName="last_name">
-      </div>
-      <div class="col-6">
-        <label for="" class="form-label">Phone Number</label>
-        <input type="phone" class="form-control" id="phone" formControlName="phone"/>
+      <div class="col-md-6 mt-5" style="margin-left: 60px;">
+        <h1 class="text-center">Welcome to Dish Dash! </h1>
+        <h3 class="text-center">Let's Get Started!</h3>
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <img src="https://cdn-icons-png.flaticon.com/512/99/99260.png?w=740&t=st=1681685595~exp=1681686195~hmac=6197d43e6eec51a95f55cc761dbf94d23815669c8e1d10f0b50fb89d5ac37611" alt="">
+        </div>
       </div>
     </div>
-  </div>
-</div>
-
-  <div class="row mb-3">
-    <div class="col-6">
-      <label for="" class="form-label">Password</label>
-      <input type="password" class="form-control" id="password" formControlName="password"/>
-    </div>
-  </div>
-  <div class="tex-center">
-    <button class="btn btn-success" type="submit">Sign Up</button>
-  </div>
-  <div><p class="text-center">Already Have an account? <a>Login</a></p></div>
-</form>
-
-</div>

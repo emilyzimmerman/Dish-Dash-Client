@@ -13,6 +13,7 @@ export class RecipeDetailComponent implements OnInit {
   recipe: any = null;
   meal: any = null;
   user: any = null;
+  reviews: any = [];
   currentUser = null;
 
   constructor(
@@ -38,9 +39,11 @@ export class RecipeDetailComponent implements OnInit {
           this.recipe = res.payload.recipe;
           this.meal = res.payload.recipe.meal;
           this.user = res.payload.recipe.user;
+          this.reviews = res.payload.recipe.reviews;
         },
       });
     });
+    console.log('Reviews', this.reviews);
   }
 
   onDeleteRecipe() {

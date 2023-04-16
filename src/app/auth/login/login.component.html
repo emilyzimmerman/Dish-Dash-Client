@@ -1,24 +1,35 @@
-<div class ="mt-5">
+    <div class="mt-5">
+      <div class="card shadow-sm mb-10 rounded">
+        <div class="card-body row">
+          <div class="col-md-6 mt-5">
+            <h1 class="text-center">Welcome Back!</h1>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-12 mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="email" formControlName="email"/>
+                </div>
+                <div class="col-12 mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="password" formControlName="password"/>
+                </div>
+              </div>
+              <div class="text-center">
+                <button class="btn btn-success" type="submit">Login</button>
+              </div>
+              <div>
+                <p class="text-center">Don't have an account? <a class="nav-link active" aria-current="page" routerLink="/signup">Signup</a></p>
+              </div>
+            </form>
+          </div>
 
-  <h1 class="text-center"> Welcome Back!</h1>
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div class="row">
-      <div class="col-6">
-        <div class="mb-3">
-          <label for="" class="form-label">Email</label>
-          <input type="email" class="form-control"
-          id="email" formControlName="email"/>
+          <div class="col-md-6 d-flex align-items-center justify-content-center">
+            <img
+              src="https://img.freepik.com/free-vector/burger-cheese-with-fire-cartoon-vector-icon-illustration-food-object-icon-concept-isolated-premium_138676-5539.jpg?w=826&t=st=1681681883~exp=1681682483~hmac=e24db8a25f09643492629f7181e00df0e7a55ef80cb0770ddd2c9b87e954f456"
+              alt=""
+              width="500px"
+              class="rounded-circle">
+          </div>
         </div>
-        <div class="col-6">
-          <label for="" class="form-label">Password</label>
-          <input type="password" class="form-control" id="password" formControlName="password"/>
-        </div>
+      </div>
     </div>
-  </div>
-    <div class="tex-center">
-      <button class="btn btn-success" type="submit">Login</button>
-    </div>
-    <div><p class="text-center">Don't have an account? <a>Login</a></p></div>
-  </form>
-
-  </div>
