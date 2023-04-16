@@ -22,7 +22,7 @@ export class MealsComponent implements OnInit {
       this.mealService.fetchMeal(mealId).subscribe({
         next: (res: any) => {
           console.log('res', res); // log response to verify its content
-          this.meal = res.payload.meal;
+          this.meal = res.payload.recipe;
           if (this.meal && this.meal.recipes) {
             this.recipes = this.meal.recipes;
           }

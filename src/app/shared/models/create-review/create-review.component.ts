@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Route } from '@angular/router';
 import { ReviewService } from '../../services/review.service';
 
 @Component({
@@ -11,18 +12,27 @@ export class CreateReviewComponent implements OnInit {
   @ViewChild('closeBtn') closeBtn: ElementRef;
 
   errors: any = [];
+  id: any = null;
 
   reviewFormGroup = new FormGroup({
     comment: new FormControl(''),
   });
-  constructor(private reviewService: ReviewService) {}
+  constructor(
+    private reviewService: ReviewService,
+    private activateRoute: ActivatedRoute
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.activateRoute.params.subscribe((params: any) => {
+      console.log('PARAMS', params);
+      this.id = params.id;
+    });
+  }
 
   onSubmit() {
     const newReview = this.reviewFormGroup.value;
 
-    this.reviewService.createReview(newReview).subscribe({
+    this.reviewService.createReview(newReview, this.id).subscribe({
       next: (res: any) => {
         console.log(res);
       },
