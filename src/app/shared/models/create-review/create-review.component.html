@@ -6,6 +6,9 @@
 </div>
 
 <!-- Modal -->
+<div *ngIf="errors.length > 0" class="alert alert-danger">
+  <div *ngFor="let error of errors">{{ error }}</div>
+</div>
 <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

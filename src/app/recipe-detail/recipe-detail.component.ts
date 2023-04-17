@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 import { UserService } from '../auth/user.service';
 import { RecipeService } from '../shared/services/recipe.service';
+import { ReviewService } from '../shared/services/review.service';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -44,6 +46,10 @@ export class RecipeDetailComponent implements OnInit {
       });
     });
     console.log('Reviews', this.reviews);
+  }
+
+  onAddReview(newReview: any) {
+    this.reviews.push(newReview);
   }
 
   onDeleteRecipe() {

@@ -22,7 +22,7 @@ style="background-image: url('{{recipe.image_path}}')"-->
 
   <div>
     <h3>Reviews</h3>
-    <app-create-review></app-create-review>
+    <app-create-review (addReview)="onAddReview($event)"></app-create-review>
     <ul>
       <li *ngFor="let review of reviews">
         <p>{{review.comment}}</p>

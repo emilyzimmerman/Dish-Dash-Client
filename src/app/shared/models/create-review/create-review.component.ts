@@ -1,4 +1,11 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Route } from '@angular/router';
 import { ReviewService } from '../../services/review.service';
@@ -10,8 +17,9 @@ import { ReviewService } from '../../services/review.service';
 })
 export class CreateReviewComponent implements OnInit {
   @ViewChild('closeBtn') closeBtn: ElementRef;
+  @Output() addReview = new EventEmitter<any>();
 
-  errors: any = [];
+  errors: string[] = [];
   id: any = null;
 
   reviewFormGroup = new FormGroup({
@@ -35,8 +43,11 @@ export class CreateReviewComponent implements OnInit {
     this.reviewService.createReview(newReview, this.id).subscribe({
       next: (res: any) => {
         console.log(res);
+        this.closeBtn.nativeElement.click();
+        this.addReview.emit(res.payload.review);
       },
       error: (errorRes: any) => {
+        this.errors.push(errorRes.error.errors); // Push error messages into the array
         console.log(errorRes);
       },
     });
