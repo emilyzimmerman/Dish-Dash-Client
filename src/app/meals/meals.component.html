@@ -1,8 +1,31 @@
+<a class="nav-link active" aria-current="page" routerLink="/home">Back</a>
+
+
 <div>
   <h1 class="text-black text-center">{{meal?.mealType}}</h1>
 </div>
+
+
 <div *ngFor="let recipe of recipes">
-  <h2>{{recipe.name}}</h2>
-  <p>{{recipe.content}}</p>
-  <img src="{{recipe.image_path}}" alt="{{recipe.name}}">
+    <div class="row shadow-sm mb-4 rounded">
+      <div class="col">
+        <h2>{{recipe.name}}</h2>
+        <div class="cartd-text mb-auto">
+          <p>{{recipe.content}}</p>
+        </div>
+        <p>
+          <a href="" class="link-secondary">Continue Reading</a>
+        </p>
+
+      </div>
+      <div class="col-auto d-none d-lg-block">
+        <img
+          style="object-fit: cover;"
+          src="{{recipe.image_path}}"
+          alt="{{recipe.name}}"
+          width="200px"
+          height="200px">
+      </div>
+    </div>
 </div>
+

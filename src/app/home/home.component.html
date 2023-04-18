@@ -4,9 +4,9 @@
   <nav class="nav justify-content-between">
     <a routerLink="/meals/{{meal.id}}" class="link-secondary" *ngFor="let meal of meals">{{meal.mealType}}</a>
   </nav>
-  <div class="bg-dark text-white p-4 p-md-5 rounded mb-4">
+  <div class="bg-header text-white p-4 p-md-5 rounded mb-4">
      <h1 class="fst-italic">Welcome to Dish Dash</h1>
-     <p> Are you ready to find your next meal?</p>
+     <h3> Are you ready to find your next meal?</h3>
   </div>
   <div class="row">
       <div class="row">
@@ -15,9 +15,9 @@
           <!-- Loop over each meal id -->
           <ng-container *ngFor="let meal of meals">
             <!--Title Card-->
-            <div class="card" style="width: 18rem; background-color: #ff9d5c; height: 100pt; text-align:center">
+            <div class="card" style="width: 18rem; background-color: #f78438; height: 100pt; text-align:center">
               <div class="card-body">
-                <h5 class="card-title">{{meal.mealType}}</h5>
+                <h5 class="card-title" style="margin-top: 15%;">{{meal.mealType}}</h5>
               </div>
             </div>
             <!--Recipe Card-->

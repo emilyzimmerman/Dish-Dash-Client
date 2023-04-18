@@ -1,22 +1,28 @@
 <header *ngIf="profileUser" class="text-center" >
   <h1 style="padding-bottom: 2rem; padding-top: 2rem;">{{profileUser.username}}'s Recipes</h1>
 </header>
-<app-create-recipe *ngIf="currentUser && currentUser.username === profileUser.username"></app-create-recipe>
+<div style="margin-bottom: 2%;">
+  <app-create-recipe *ngIf="currentUser && currentUser.username === profileUser.username"></app-create-recipe>
+</div>
 
 <div *ngIf="profileUser" class="container">
   <div class="row justify-content-center">
     <div class="col-md-10 col-lg-8 col-xl-7">
       <div style="cursor: pointer;" *ngFor="let recipe of profileRecipes" routerLink="/recipes/{{recipe.id}}">
         <div class="post-preview">
-          <h2>{{recipe.name}}</h2>
-          <p>{{recipe.content}}</p>
-          <p>
-            <a routerLink="/recipes/{{recipe.id}}" class="link-secondary">Continue Reading</a>
-          </p>
-          <p>Created on some date</p>
+          <div class="card" style="margin-bottom: 4%;">
+            <div class="card-header">
+              <h2>{{recipe.name}}</h2>
+            </div>
+            <div class="card-body">
+              <p class="card-text">{{recipe.content}}</p>
+              <a routerLink="/recipes/{{recipe.id}}" class="link-secondary">Continue Reading</a>
+            </div>
+          </div>
         </div>
-        <hr class="my-4"/>
       </div>
     </div>
   </div>
 </div>
+
+
