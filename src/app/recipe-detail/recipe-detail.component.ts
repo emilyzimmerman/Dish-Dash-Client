@@ -42,10 +42,11 @@ export class RecipeDetailComponent implements OnInit {
           this.meal = res.payload.recipe.meal;
           this.user = res.payload.recipe.user;
           this.reviews = res.payload.recipe.reviews;
+          console.log(this.recipe, recipeId);
         },
       });
     });
-    console.log('Reviews', this.reviews);
+    console.log('Reviews', this.reviews.user);
   }
 
   onAddReview(newReview: any) {
@@ -54,7 +55,7 @@ export class RecipeDetailComponent implements OnInit {
 
   onDeleteRecipe() {
     this.recipeService.deleteRecipe(this.recipe.id).subscribe({
-      next: (res: any) => {
+      next: (res) => {
         this.route.navigate([`/profile/${this.currentUser.username}`]);
       },
     });

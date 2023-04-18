@@ -1,33 +1,42 @@
 <!--Add a background image but not working ->
 style="background-image: url('{{recipe.image_path}}')"-->
-
-<header *ngIf="recipe" style="background-image: url('https://www.lacademie.com/wp-content/uploads/2022/04/asian-cuisines.jpg')">
-  <div class="position-relative">
-    <h1 class="text-white text-center">{{recipe.name}} </h1>
-    <h3 class="my-2 text-white text-center">Created by: <a routerLink="/profile/{{user.username}}">{{recipe.user.username}}</a></h3>
-    <div class=" text-white text-center text-center">
-      <span class="badge bg-dark mx-2">Meal Type: {{recipe.meal.mealType}}</span>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <header *ngIf="recipe" style="background-image: url('https://www.lacademie.com/wp-content/uploads/2022/04/asian-cuisines.jpg')">
+        <div class="position-relative">
+          <h1 class="text-white text-center">{{recipe.name}} </h1>
+          <h3 class="my-2 text-white text-center">Created by: <a routerLink="/profile/{{user.username}}">{{recipe.user.username}}</a></h3>
+          <div class=" text-white text-center text-center">
+            <span class="badge bg-dark mx-2">Meal Type: {{recipe.meal.mealType}}</span>
+          </div>
+          <div class="text-center" *ngIf="user && currentUser && user.username === currentUser.username">
+            <app-edit-recipe [recipe]="recipe"></app-edit-recipe> |
+            <button class="btn btn-danger" (click)="onDeleteRecipe()">Delete Recipe</button> |
+          </div>
+        </div>
+      </header>
+      <div *ngIf="recipe">
+        <p>{{recipe.content}}</p>
+      </div>
     </div>
-    <div class="text-center" *ngIf="user && currentUser && user.username === currentUser.username">
-      <app-edit-recipe [recipe]="recipe"></app-edit-recipe> |
-      <button class="btn btn-danger" (click)="onDeleteRecipe()">Delete Recipe</button> |
+    <div class="col-md-6">
+      <div>
+        <h3>Reviews</h3>
+        <app-create-review (addReview)="onAddReview"></app-create-review>
+        <ul>
+          <li *ngFor="let review of reviews">
+            <p>{{review.comment}}</p>
+            <h4>{{ review.user_id}}</h4>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
-</header>
+</div>
 
-<article>
-  <div *ngIf="recipe">
-    <p>{{recipe.content}}</p>
-  </div>
 
-  <div>
-    <h3>Reviews</h3>
-    <app-create-review (addReview)="onAddReview($event)"></app-create-review>
-    <ul>
-      <li *ngFor="let review of reviews">
-        <p>{{review.comment}}</p>
-        <h4>{{ review.user_id}}</h4>
-      </li>
-    </ul>
-  </div>
-</article>
+
+
+
+
