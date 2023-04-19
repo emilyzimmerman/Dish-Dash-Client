@@ -8,6 +8,9 @@
      <h1 class="fst-italic">Welcome to Dish Dash</h1>
      <h3> Are you ready to find your next meal?</h3>
   </div>
+  <div *ngIf="isLoading" class="text-center">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
   <div class="row">
       <div class="row">
         <!--Start of a card-->

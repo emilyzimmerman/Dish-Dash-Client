@@ -12,6 +12,7 @@ import { AuthService } from '../auth.service';
 export class SignupComponent implements OnInit {
   error: boolean = false;
   completed: boolean = false;
+  isLoading = false;
 
   signupForm = new FormGroup({
     email: new FormControl(''),
@@ -29,6 +30,7 @@ export class SignupComponent implements OnInit {
   onSubmit() {
     const user = this.signupForm.value;
     console.log(user);
+    this.isLoading = true;
 
     this.authService.signup(user).subscribe({
       next: (res) => {

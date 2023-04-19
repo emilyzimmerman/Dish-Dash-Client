@@ -11,12 +11,15 @@ import { FilterPipe } from '../filter.pipe';
 export class HomeComponent implements OnInit {
   suggestedRecipes: any = [];
   meals: any = [];
-  constructor(private recipeService: RecipeService) {}
+  isLoading = true;
 
+  constructor(private recipeService: RecipeService) {}
   ngOnInit(): void {
     this.recipeService.fetchRecipes().subscribe((res: any) => {
+      this.isLoading = true;
       console.log(res);
       if (res.success) {
+        this.isLoading = false;
         this.suggestedRecipes = res.payload.suggested;
         this.meals = res.payload.meals;
       }
