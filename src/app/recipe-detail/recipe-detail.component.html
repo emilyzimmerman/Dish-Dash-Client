@@ -6,7 +6,7 @@ style="background-image: url('{{recipe.image_path}}')"-->
       <div *ngIf="isLoading" class="text-center">
         <app-loading-spinner></app-loading-spinner>
       </div>
-      <header *ngIf="recipe" style="background-image: url('https://www.lacademie.com/wp-content/uploads/2022/04/asian-cuisines.jpg')">
+      <header *ngIf="recipe" style="background-image: url('{{recipe.image_path}}')">
         <div class="position-relative">
           <h1 class="text-white text-center">{{recipe.name}} </h1>
           <h3 class="my-2 text-white text-center">Created by: <a routerLink="/profile/{{user.username}}">{{recipe.user.username}}</a></h3>
