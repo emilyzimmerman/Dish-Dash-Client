@@ -23,16 +23,24 @@ style="background-image: url('{{recipe.image_path}}')"-->
         <p>{{recipe.content}}</p>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 rounded" style="padding: 20px; background-color: #F4c09D ;border: 1px solid black">
       <div>
-        <h3>Reviews</h3>
-        <app-create-review (addReview)="onAddReview"></app-create-review>
-        <ul>
-          <li *ngFor="let review of reviews">
-            <p>{{review.comment}}</p>
-            <h4>{{ review.user_id}}</h4>
-          </li>
-        </ul>
+        <h3 class="text-center">Reviews</h3>
+        <div class="text-center">
+          <app-create-review (addReview)="onAddReview"></app-create-review>
+        </div>
+          <div style="margin-top: 4%;" *ngFor="let review of reviews">
+            <div class="card">
+              <div class="card-header">
+                <h4>{{ review.user_id}}</h4>
+              </div>
+              <div class="card-body">
+                <blockquote class="blockquote mb-0">
+                  <p>{{review.comment}}</p>
+                </blockquote>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
   </div>

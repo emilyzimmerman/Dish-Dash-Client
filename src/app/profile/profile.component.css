@@ -1,0 +1,13 @@
+#userHeader {
+  box-shadow: 10px 10px;
+}
+
+.card-spaced {
+  margin: 10px;
+  height: 300px
+}
+
+.card-img-top {
+  height: 60%;
+  object-fit: cover;
+}
