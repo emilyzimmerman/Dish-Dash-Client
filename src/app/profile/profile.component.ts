@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit {
   profileRecipes = null;
   profileUser: any = null;
   currentUser: User = null;
+  isLoading = true;
   constructor(
     private activatedRoute: ActivatedRoute,
     private http: HttpClient,
@@ -38,8 +39,8 @@ export class ProfileComponent implements OnInit {
           next: (res: any) => {
             this.profileUser = res.payload.user;
             this.profileRecipes = res.payload.user.recipes;
-
             //check to see if profile user is equal to current user
+            this.isLoading = false;
             if (this.currentUser.id === this.profileUser.id) {
               this.recipeService.currentUsesrRecipesSubject.subscribe(
                 (currentUserRecipes) => {

@@ -1,5 +1,7 @@
 <a class="nav-link active" aria-current="page" routerLink="/home">Back</a>
-
+<div *ngIf="isLoading" class="text-center">
+  <app-loading-spinner></app-loading-spinner>
+</div>
 
 <div>
   <h1 class="text-black text-center">{{meal?.mealType}}</h1>

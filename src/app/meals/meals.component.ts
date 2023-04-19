@@ -10,6 +10,7 @@ import { MealsService } from '../shared/services/meals.service';
 export class MealsComponent implements OnInit {
   meal: any;
   recipes: any[];
+  isLoading = true;
   constructor(
     private mealService: MealsService,
     private activatedRoute: ActivatedRoute
@@ -27,6 +28,7 @@ export class MealsComponent implements OnInit {
             this.recipes = this.meal.recipes;
           }
           console.log('MEALS TEST', res);
+          this.isLoading = false;
         },
         error: (err) => console.error(err), // log any errors
       });

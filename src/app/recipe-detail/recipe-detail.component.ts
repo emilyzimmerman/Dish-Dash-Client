@@ -17,6 +17,7 @@ export class RecipeDetailComponent implements OnInit {
   user: any = null;
   reviews: any = [];
   currentUser = null;
+  isLoading = true;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -43,6 +44,7 @@ export class RecipeDetailComponent implements OnInit {
           this.user = res.payload.recipe.user;
           this.reviews = res.payload.recipe.reviews;
           console.log(this.recipe, recipeId);
+          this.isLoading = false;
         },
       });
     });

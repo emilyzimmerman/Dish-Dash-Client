@@ -3,6 +3,9 @@ style="background-image: url('{{recipe.image_path}}')"-->
 <div class="container">
   <div class="row">
     <div class="col-md-6">
+      <div *ngIf="isLoading" class="text-center">
+        <app-loading-spinner></app-loading-spinner>
+      </div>
       <header *ngIf="recipe" style="background-image: url('https://www.lacademie.com/wp-content/uploads/2022/04/asian-cuisines.jpg')">
         <div class="position-relative">
           <h1 class="text-white text-center">{{recipe.name}} </h1>

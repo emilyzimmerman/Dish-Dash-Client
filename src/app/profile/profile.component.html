@@ -1,4 +1,7 @@
 <header *ngIf="profileUser" class="text-center" >
+  <div *ngIf="isLoading" class="text-center">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
   <h1 style="padding-bottom: 2rem; padding-top: 2rem;">{{profileUser.username}}'s Recipes</h1>
 </header>
 <div style="margin-bottom: 2%;">
