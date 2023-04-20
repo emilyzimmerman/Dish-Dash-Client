@@ -45,10 +45,10 @@ export class RecipeDetailComponent implements OnInit {
           this.reviews = res.payload.recipe.reviews;
           console.log(this.recipe, recipeId);
           this.isLoading = false;
+          console.log('Reviews', this.reviews);
         },
       });
     });
-    console.log('Reviews', this.reviews.user);
   }
 
   onAddReview(newReview: any) {

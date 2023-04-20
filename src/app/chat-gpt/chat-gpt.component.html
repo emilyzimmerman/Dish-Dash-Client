@@ -1,10 +1,68 @@
-<form>
-  <label>
-    What's Your Question?
-    <input type="text" name="prompt" [(ngModel)]="prompt">
-  </label>
-  <button (click)="getGptResponse()">Get response</button>
-</form>
 
-Response:
-<p>{{ gptResponse }}</p>
+
+
+<html>
+  <head>
+    <title>ChatGPT Form</title>
+    <style>
+      /* CSS for form container */
+      .form-container {
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        padding: 20px;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      /* CSS for form labels */
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+
+      /* CSS for form input fields */
+      input[type="text"], textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        resize: vertical;
+      }
+
+      /* CSS for form submit button */
+      .btn-submit {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: right;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <form>
+       <h3>Hi there!</h3>
+        <h4>I'm Saucy Sue the Chatbot Chef!</h4>
+        <label for="message">What can I help you with?</label>
+        <textarea type="text" name="prompt" [(ngModel)]="prompt"></textarea>
+        <button class="btn-submit" (click)="getGptResponse()">Get response</button>
+      </form>
+    </div>
+    Response:
+  <p>{{ gptResponse }}</p>
+  <div *ngIf="errors && errors.length">
+    <ul>
+      <li *ngFor="let error of errors">{{ error.message }}</li>
+    </ul>
+  </div>
+  </body>
+</html>

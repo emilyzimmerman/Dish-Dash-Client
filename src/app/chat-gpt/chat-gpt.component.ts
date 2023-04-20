@@ -9,15 +9,22 @@ import { ChatGPTService } from '../shared/services/chat-gpt.service';
 export class ChatGPTComponent implements OnInit {
   prompt: any = null;
   gptResponse: any = null;
+  errors: any[] = [];
 
   constructor(private gptService: ChatGPTService) {}
 
   ngOnInit(): void {}
 
   getGptResponse() {
-    this.gptService.getGptResponse(this.prompt).subscribe((res: any) => {
-      this.gptResponse = res.generated_text;
-      console.log(res);
-    });
+    this.gptService.getGptResponse(this.prompt).subscribe(
+      (res: any) => {
+        this.gptResponse = res.generated_text;
+        console.log(res);
+      },
+      (error) => {
+        this.errors = error;
+        console.error(error);
+      }
+    );
   }
 }
